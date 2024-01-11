@@ -1,0 +1,129 @@
+<h1>To Do List</h1>
+<div class="fluid-container mt-3">
+<div class="container listdiv">
+<form [formGroup]="TaskListForm" (ngSubmit)="addTaskList()">
+    <div class="row">
+       <div class="col-9">
+        <label for="taskName" class="form-label">Task Name</label>
+        <input type="text" required class="form-control" id="taskName" formControlName="taskName" placeholder="name">
+      </div>
+
+
+      <div class="row">
+      <div class="col-9">
+        <label for="startDate" class="form-label">Start Date</label>
+        <input type="date" class="form-control" id="startDate" formControlName="startDate"placeholder="startDate">
+      </div>
+    </div>
+      <div class="row">
+      <div class="col-9">
+        <label for="endDate" class="form-label">End Date</label>
+        <input type="date" class="form-control" id="endDate"formControlName="endDate" placeholder="endDate">
+      </div>
+</div>
+
+    </div>
+    <div class="row">
+        <div class="col-9">
+            <label for="priority" class="form-label">Priority</label>
+            <select class="form-select"formControlName="priority"id="priority" aria-label="Disabled select example">
+                <option value="High">High</option>
+                <option value="Medium">Medium</option>
+                <option value="Low">Low</option>
+              </select>
+          </div>
+    </div>
+    <div class="form-floating mt-3">
+        <input type="submit" *ngIf="!isUpdate" [disabled]="TaskListForm.invalid" class="btn btn-success" value="Add"/>
+        <input type="submit" *ngIf="isUpdate" [disabled]="TaskListForm.invalid" class="btn btn-primary" value="Update"/>
+        &nbsp;&nbsp;
+        <input type="button" class="btn btn-danger" value="Cancel" (click)="clearForm()"/>
+        &nbsp;&nbsp;
+       </div>
+  </form>
+
+</div>
+<hr>
+<div class="row">
+<div class="col-6">
+  <div class="buttonColour1">
+    <label for="New List" class="form-label lable1">New Task</label><br><br></div>
+
+    <table class="table table-dark table-hover" *ngIf="taskList!=null && taskList.length>0">
+      <thead>
+          <tr>
+              <th>Id</th>
+              <th>Name</th>
+              <th>Start Date</th>
+              <th>End Date</th>
+              <th>priority</th>
+              <th >Actions</th>
+          </tr>
+      </thead>
+      <tbody>
+          <tr  class="table-primary" *ngFor="let task of taskList">
+              <td>{{task.taskId}}</td>
+              <td>{{task.taskName}}</td>
+              <td>{{task.startDate | date:"dd/MM/yyyy"}}</td>
+              <td>{{task.endDate |date:"dd/MM/yyyy" }}</td>
+              <td>{{task.priority}}</td>
+             
+              <td  class="actions">
+                 
+                <mat-menu #taskMenu="matMenu">
+                  <button mat-menu-item (click)="updateTaskList(task)">
+                    <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                    Edit Task
+                  </button>
+                  <button mat-menu-item (click)="deleteTask(task.taskId)">
+                    <i class="fa fa-trash-o" aria-hidden="true"></i>
+                    Delete Task
+                  </button>
+                  <button mat-menu-item (click)="completedTask(task.taskId)">
+                    <i class="fa fa-check" aria-hidden="true"></i>
+                    completed
+                  </button>
+                </mat-menu>
+                
+                <i class="fa fa-ellipsis-v fa-sm text-primary" aria-hidden="true" [matMenuTriggerFor]="taskMenu" title="Task Options"></i>
+                
+                  </td>
+          </tr>
+      </tbody>
+  </table>
+  </div>
+  <div class="col-6">
+    <div class="buttonColour">
+      <label for="Completed List" class="form-label lable1">Completed Task</label></div><br><br>
+    <table class="table table-dark table-hover" *ngIf="completedTaskList!=null && completedTaskList.length>0">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Name</th>
+                    <th>Start Date</th>
+                    <th>End Date</th>
+                    <th>priority</th>
+                    
+                </tr>
+            </thead>
+            <tbody>
+                <tr  class="table-primary" *ngFor="let task of completedTaskList">
+                    <td>{{task.taskId}}</td>
+                    <td>{{task.taskName}}</td>
+                    <td>{{task.startDate | date:"dd/MM/yyyy"}}</td>
+                    <td>{{task.endDate |date:"dd/MM/yyyy" }}</td>
+                    <td>{{task.priority}}</td>
+                   
+                    
+                </tr>
+            </tbody>
+        </table>
+    &nbsp;&nbsp;
+  
+  </div>
+
+</div>
+    <br><br>
+   
+    </div>
+

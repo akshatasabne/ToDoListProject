@@ -1,0 +1,86 @@
+h1{
+    text-align: center;
+    background-color: #d06ea5;
+    margin-bottom:-20px;
+    height: 50px;
+    font-size: 40px;
+    margin-top: 2px;
+    font-weight: 700;
+    padding-top: 5px;
+
+}
+.fluid-container{
+ background-color: antiquewhite;
+height:1000px;
+width: 100%;
+}
+#submitButton{
+    margin-top: 20px;
+}
+body {
+    
+    margin: 0; 
+    padding: 0;
+}
+.container {
+    max-width: 600px;
+    margin: 0 auto; 
+    border: 1px solid #ccc; 
+    padding: 20px; 
+    border-radius: 10px; 
+    background-color: #f2f2f2;
+}
+
+.form-label {
+    font-weight: bold;
+}
+
+.form-control {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+}
+
+.btn-primary {
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.buttonColour{
+    text-align: center;
+    margin-left:250px;
+    margin-top: 10px;
+  
+    height: 50px;
+    width:200px;
+padding-top: 15px;    
+margin-bottom: -9px;
+border-radius: 5px;
+background-color: rgb(204, 167, 241);
+
+}
+.buttonColour1{
+    text-align: center;
+    margin-left:250px;
+    margin-top: 10px;
+    
+    height: 50px;
+    width:200px;
+padding-top: 15px; 
+border-radius: 5px;
+background-color: rgb(204, 167, 241);
+margin-bottom: 30px;
+   
+}
+.listdiv{
+padding-left: 100px; 
+width: 500px;   
+}
+.lable1{
+    font-size: large;
+}
+
